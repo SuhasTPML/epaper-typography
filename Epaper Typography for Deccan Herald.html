@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Newspaper Article Layout Example</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Roboto+Slab:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+       /* Base styling */
+body {
+    font-family: 'Roboto Slab', serif; /* Maintained as requested */
+    line-height: 1.6;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0;
+    background-color: #f7f7f7;
+    color: #333333;
+}
+
+/* Article container */
+.articleDetail {
+    background-color: #ffffff;
+    padding: 30px 25px;
+    margin: 0;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+    border-radius: 0;
+    border-top: none;
+}
+
+/* Headlines - Keep Playfair but match DH styling */
+h1 {
+    font-family: 'Playfair Display', serif; /* Maintained as requested */
+    font-size: 2.4em;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 15px;
+    color: #000000;
+    letter-spacing: -0.01em;
+}
+
+h2 {
+    font-family: 'Playfair Display', serif; /* Maintained as requested */
+    font-size: 1.2em;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    color: #555555;
+}
+
+h3 {
+    font-family: 'Playfair Display', serif; /* Maintained as requested */
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    color: #0099a9; /* DH teal color */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Update accent colors to teal */
+h5 {
+    font-family: 'Roboto Slab', serif; /* Maintained as requested */
+    padding: 15px 20px 12px 20px; /* Reduced top and bottom padding */
+    margin: 15px 0; /* Reduced top and bottom margins */
+    border-left: 4px solid #0099a9; /* DH teal color */
+    font-weight: 400;
+    font-size: 1em;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+/* Text elements - Keep fonts but update colors to DH style */
+.CrossHead {
+    font-family: 'Playfair Display', serif; /* Maintained as requested */
+    font-size: 1.2em;
+    font-weight: 600;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    color: #0099a9; /* DH teal color */
+}
+
+.Briefhead {
+    font-family: 'Playfair Display', serif; /* Maintained as requested */
+    font-size: 1em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #0099a9; /* DH teal color */
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.byline {
+    font-family: 'Playfair Display', serif; /* Maintained as requested */
+    font-size: 0.9em;
+    font-style: italic;
+    color: #666;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+/* Body text elements - Keep Roboto Slab but match DH layout */
+p {
+    font-family: 'Roboto Slab', serif; /* Maintained as requested */
+    font-size: 1em;
+    margin-bottom: 15px;
+    text-align: left; /* DH uses left alignment, not justify */
+    line-height: 1.6;
+}
+
+.TurnLine {
+    font-family: 'Roboto Slab', serif; /* Maintained as requested */
+    font-size: 0.85em;
+    color: #0099a9; /* DH teal color */
+    font-style: italic;
+    background-color: #f7f7f7;
+    padding: 8px 12px;
+    border-radius: 0;
+    margin: 10px 0;
+}
+
+.ListBody {
+    font-family: 'Roboto Slab', serif; /* Maintained as requested */
+    margin-left: 20px;
+    margin-bottom: 8px;
+}
+
+.Question {
+    font-family: 'Roboto Slab', serif; /* Maintained as requested */
+    font-weight: 600;
+    color: #0099a9; /* DH teal color */
+    margin-top: 15px;
+    margin-bottom: 8px;
+}
+
+.Rag {
+    font-family: 'Roboto Slab', serif; /* Maintained as requested */
+    text-align: left;
+    color: #333;
+}
+
+.ListingGrey {
+    font-family: 'Roboto Slab', serif; /* Maintained as requested */
+    color: #555;
+    background-color: #f1f1f1;
+    padding: 8px;
+    margin: 5px 0;
+    border-radius: 0; /* DH uses fewer rounded corners */
+}
+
+/* Add styling for paragraphs inside h5 */
+h5 p {
+    margin-top: 0;
+    margin-bottom: 6px;
+}
+
+h5 p:last-child {
+    margin-bottom: 0;
+}
+
+/* Image and caption styling */
+.caption {
+    font-family: 'Roboto Slab', serif; /* Maintained as requested */
+    font-size: 0.85em;
+    color: #555;
+    margin-top: 10px;
+    padding: 8px;
+    background-color: #f8f8f8;
+    border-radius: 0;
+}
+
+.credit {
+    font-family: 'Roboto Slab', serif; /* Maintained as requested */
+    font-size: 0.8em;
+    color: #888;
+    text-align: right;
+    margin-top: 5px;
+}
+
+.PhotoCredit {
+    font-family: 'Roboto Slab', serif; /* Maintained as requested */
+    font-size: 0.8em;
+    color: #666;
+    font-style: italic;
+}
+
+/* Image placeholder */
+.image-placeholder {
+    width: 100%;
+    height: 200px;
+    background-color: #e2e8f0;
+    border: 1px solid #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #718096;
+    margin: 20px 0;
+    border-radius: 0;
+}
+    </style>
+</head>
+<body>
+    <div class="articleDetail">
+        <h1><p>Tech Revolution Transforms Modern Education Landscape</p></h1>
+        
+        <p class="byline">By Technology Correspondent</p>
+        
+        <h2><p>Educational institutions worldwide are embracing digital transformation at unprecedented rates. Virtual reality classrooms and AI-powered learning platforms are reshaping how students engage with knowledge, making education more accessible and personalized than ever before.</p></h2>
+        
+        <p class="TurnLine">Continued from page 1</p>
+        
+        <h3 style="color:brown;"><p>digital innovation</p></h3>
+        
+        <p>The integration of technology in education has moved beyond simple digitization of textbooks. Today's <span class="bold">smart classrooms</span> feature interactive whiteboards, augmented reality demonstrations, and real-time collaboration tools that connect students across continents.</p>
+        
+        <p class="CrossHead">Implementation Challenges</p>
+        
+        <p>While the benefits are clear, educational institutions face significant hurdles. Infrastructure costs, teacher training requirements, and <span class="italic">digital equity concerns</span> remain major obstacles to widespread adoption of these revolutionary technologies.</p>
+        
+        <div class="image-placeholder">
+            [Image: Students using VR headsets in classroom]
+        </div>
+        
+        <div class="caption"><p>Students at Delhi Public School exploring ancient Rome through virtual reality</p></div>
+        
+        <p>The classroom of tomorrow features immersive learning experiences<span class="PhotoCredit"> reuters photo</span></p>
+        
+        <div class="credit"></div>
+        
+        <p class="Briefhead">KEY STATISTICS</p>
+        
+        <p class="ListBody">• 78% of schools report improved student engagement with tech integration</p>
+        <p class="ListBody">• Virtual reality adoption increased by 340% in educational sector</p>
+        <p class="ListBody">• AI tutoring systems show 23% improvement in learning outcomes</p>
+        <p class="ListBody">• Remote learning capabilities now standard in 89% of institutions</p>
+        
+        <p class="Question">Q: How are teachers adapting to these changes?</p>
+        
+        <p>Educators are receiving extensive training in digital pedagogy, with many embracing the shift toward becoming facilitators rather than traditional lecturers. Professional development programs focus on leveraging technology to enhance rather than replace human interaction in learning.</p>
+        
+        <h5 style="background-color:oldlace;"><i><p>Dr. Priya Sharma<br/>Principal, Modern International School</p><p>"The transformation we've witnessed in just five years is remarkable. Our students are not just consuming information—they're creating, collaborating, and solving real-world problems using tools we could only dream of a decade ago."</p></i></h5>
+        
+        <p class="Rag">Industry experts predict that within the next decade, traditional classroom models will be completely revolutionized through emerging technologies.</p>
+        
+        <p class="ListingGrey">Global EdTech market valued at $254 billion in 2023</p>
+        <p class="ListingGrey">Expected annual growth rate of 16.3% through 2030</p>
+        <p class="ListingGrey">India ranks 3rd globally in EdTech investment</p>
+        
+        <p>The future of education lies in personalized learning pathways that adapt to individual student needs. Machine learning algorithms can now identify learning gaps in real-time and provide customized content to help students master difficult concepts at their own pace.</p>
+        
+        <p>As we move forward, the challenge will be ensuring that technological advancement in education remains inclusive and accessible to all students, regardless of their socioeconomic background or geographical location.</p>
+    </div>
+</body>
+</html>

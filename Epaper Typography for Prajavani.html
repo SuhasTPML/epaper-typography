@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+    <meta charset="UTF-8">
+    <title>ಸಮಗ್ರ HTML ಮಾದರಿ (ಕಸ್ಟಮ್ ಫಾಂಟ್‌ಗಳೊಂದಿಗೆ) (Comprehensive HTML Sample with Custom Fonts)</title>
+    <style>
+        @font-face {
+            font-family: 'PvHeadlineSemiBold';
+            src: url('https://cdn.glitch.global/ed5466e6-4d6b-44c9-94a2-02d4fbcec85f/PvHeadlineSemiBold.ttf?v=1749108539877') format('truetype');
+            font-weight: 600; /* SemiBold */
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'PvTextRegular';
+            src: url('https://cdn.glitch.global/ed5466e6-4d6b-44c9-94a2-02d4fbcec85f/PvTextRegular.ttf?v=1749108625260') format('truetype');
+            font-weight: 400; /* Regular */
+            font-style: normal;
+        }
+
+        /* Base styling */
+        body {
+            font-family: 'PvTextRegular', Verdana, sans-serif; /* Default text font, Verdana as fallback */
+            line-height: 1.6;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0;
+            background-color: #f7f7f7; /* Light gray background like DH */
+            color: #333333;
+            word-spacing: 3px; /* Added 3px word spacing globally */
+        }
+
+        /* Article container */
+        .articleDetail {
+            background-color: #ffffff;
+            padding: 30px 25px;
+            margin: 0;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow like DH */
+            border-radius: 0;
+            border-top: none;
+        }
+
+        /* Headings - Ensuring <p> inside headings doesn't add extra margins */
+        h1, h2, h3, h5 { margin-block-start: 0.83em; margin-block-end: 0.83em; } /* General reset */
+        h1 p, h2 p, h3 p, h5 p { margin: 0; padding: 0; }
+
+        h1 { /* Primary article headline (Heading Level H1) */
+            font-family: 'PvHeadlineSemiBold', sans-serif;
+            font-size: 2.4em;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 15px;
+            color: #000000;
+            letter-spacing: -0.01em;
+        }
+
+        h3 { /* Section name above the main headline (Heading Level H3) */
+            font-family: 'PvHeadlineSemiBold', sans-serif;
+            font-size: 1.1em;
+            font-weight: 600;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            color: #b82831; /* Prajavani red */
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        h2 { /* Major section headings or special report titles (Heading Level H2) */
+            font-family: 'PvHeadlineSemiBold', sans-serif;
+            font-size: 1.4em; /* Increased from 1.2em to make it larger than h3 (1.1em) */
+            font-weight: 600; /* Increased from 400 to make it more prominent */
+            line-height: 1.4;
+            margin-bottom: 20px;
+            color: #b82831; /* Changed to Prajavani red */
+        }
+        
+        h5 { /* Attribution for a block quote (Heading Level H5) */
+            font-family: 'PvTextRegular', sans-serif;
+            padding: 15px 20px 12px 20px; /* Reduced padding, especially at bottom */
+            margin: 20px 0; /* Reduced margins */
+            border-left: 4px solid #b82831; /* Prajavani red */
+            font-weight: 400;
+            font-size: 1em;
+            line-height: 1.6;
+            background-color: #f9f9f9;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Subtle shadow like DH */
+        }
+        h5 i { 
+            font-style: normal; 
+        }
+
+
+        /* Image related styles (DIV Classes) */
+        /* Image styling */
+        .pictures { /* (DIV Class: pictures) */
+            margin: 20px 0;
+            border: 1px solid #ddd;
+            padding: 5px;
+            background-color: #f8f8f8;
+            border-radius: 0;
+        }
+        .picture img { /* (DIV Class: picture) */
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+        .credit { /* (DIV Class: credit) */
+            font-family: 'PvTextRegular', sans-serif;
+            font-size: 0.8em;
+            color: #888;
+            text-align: left;
+            margin-top: 5px;
+        }
+        .caption p { /* (DIV Class: caption) */
+            font-family: 'PvTextRegular', sans-serif;
+            font-size: 0.85em;
+            color: #555;
+            margin-top: 10px;
+            margin-bottom: 0; /* Remove bottom margin */
+            padding: 8px 8px 4px 8px; /* Reduced bottom padding */
+            background-color: #f8f8f8;
+            border-radius: 0;
+        }
+
+        /* Body Text and Paragraph Classes (DIV Class: bodytext & P Classes) */
+        /* The inline font-family:verdana on .bodytext itself */
+        /* will be overridden for its <p> children by the more specific rules below */
+        
+        .bodytext p { /* (DIV Class: bodytext) - general paragraphs within */
+            font-family: 'PvTextRegular', sans-serif; 
+            font-size: 1em;
+            margin-bottom: 15px;
+            text-align: left; /* Left alignment like Deccan Herald */
+            line-height: 1.6;
+            color: #333333; /* Updated to match DH color */
+        }
+
+        .bodytext > i > p { /* (P Content Pattern: Author Byline & Dateline/News Service) */
+            font-family: 'PvHeadlineSemiBold', sans-serif;
+            font-size: 0.9em;
+            font-style: normal;
+            color: #666;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #eee; /* Changed from yellow to light gray like DH */
+            padding-bottom: 10px;
+        }
+        .bodytext > i:first-child > p { 
+             margin-top: 0.5em;
+        }
+
+
+        p.Subhead { /* (P Class: Subhead) */
+            font-family: 'PvHeadlineSemiBold', sans-serif;
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            color: #b82831; /* Prajavani red */
+        }
+
+        p.Briefhead { /* (P Class: Briefhead) */
+            font-family: 'PvHeadlineSemiBold', sans-serif;
+            font-size: 1em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #b82831; /* Prajavani red */
+            margin-top: 0; /* Removed top margin */
+            margin-bottom: 8px; /* Reduced bottom margin */
+        }
+
+        p.quote { /* (P Class: quote) */
+            font-family: 'PvTextRegular', sans-serif;
+            font-style: normal;
+            color: #3A3A3A;
+            padding: 10px 12px 6px 12px; /* Reduced bottom padding */
+            margin: 0.8em 0 0.5em 0; /* Reduced margins, especially at bottom */
+            border-left: 3px solid #b82831; /* Prajavani red */
+            background-color: #FFF8DC; /* Cream background */
+        }
+        h5 p.quote { 
+            background-color: transparent; 
+            border-left: none; 
+            padding: 0;
+            margin-bottom: 0.3em; /* Reduced margin bottom */
+        }
+        h5 p.quote:last-child {
+            margin-bottom: 0;
+        }
+        div[style*="background-color:gainsboro"] p.quote { 
+            background-color: #FFFEF0; /* Light cream like Prajavani */
+            border-left-color: #b82831; /* Prajavani red */
+            margin-top: 6px;
+            margin-bottom: 6px;
+        }
+
+        /* Span Classes */
+        span.Designate { /* (Span Class: Designate) */
+            font-family: 'PvTextRegular', sans-serif;
+            font-weight: 400; 
+            font-style: normal; 
+            color: #b82831; /* Prajavani red */
+        }
+
+        /* Ad Placeholder (DIV Class: adPlaceholder) */
+        /* Ad Placeholder */
+        .adPlaceholder { 
+            width: 100%;
+            height: 200px;
+            background-color: #e2e8f0;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #718096;
+            margin: 20px 0;
+            border-radius: 0;
+            font-family: 'PvTextRegular', sans-serif;
+            font-size: 0.9em;
+        }
+
+        /* Styled Div (gainsboro background from inline style) (DIV Class: Inline Style for Supplementary Content) */
+        /* Styled sections */
+        div[style*="background-color:gainsboro"] {
+            margin: 15px 0; /* Reduced from 25px to 15px */
+            padding: 10px 15px 8px 15px; /* Reduced top and bottom padding */
+            border: 1px solid #ddd;
+            border-radius: 0;
+            background-color: #f1f1f1;
+        }
+        div[style*="background-color:gainsboro"]:empty { 
+            min-height: 15px; 
+            border: none; 
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+        }
+        
+        /* Continued from page one styling */
+        /* Since we can't modify HTML, we'll create a specific CSS class that can be applied in the HTML */
+        .TurnLine {
+            font-family: 'PvTextRegular', sans-serif;
+            font-size: 0.85em;
+            color: #b82831; /* Reverted to Prajavani red */
+            font-style: normal;
+            background-color: #f7f7f7;
+            padding: 6px 12px 4px 12px; /* Reduced padding, especially at bottom */
+            border-radius: 0;
+            margin: 8px 0 5px 0; /* Reduced margins, especially at bottom */
+        }
+        
+        /* Paragraphs within gainsboro sections */
+        div[style*="background-color:gainsboro"] > p:not(.Briefhead):not(.quote) {
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+        div[style*="background-color:gainsboro"] > p:last-child {
+            margin-bottom: 0;
+        }
+        
+        /* Style for the specific paragraph that contains 'continued from page one' text */
+        div[style*="background-color:gainsboro"] p:nth-of-type(3) {
+            font-family: 'PvTextRegular', sans-serif;
+            font-size: 0.85em;
+            color: #b82831; /* Reverted to Prajavani red */
+            font-style: normal;
+            background-color: #f7f7f7;
+            padding: 6px 12px 4px 12px; /* Reduced padding, especially at bottom */
+            border-radius: 0;
+            margin: 8px 0 5px 0; /* Reduced margins, especially at bottom */
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="articleDetail">
+
+    <h3 style="color:brown;"><p>ವಿಶೇಷ ವರದಿ (Special Report): ಮುಖ್ಯಾಂಶ ಪೂರ್ವ ಪಟ್ಟಿ (Kicker/Pre-title)</p></h3>
+    <h1><p>ಇದು ಮುಖ್ಯ ಸುದ್ದಿ ಶೀರ್ಷಿಕೆ (Main News Headline): ಮಹಾವೀರ ಜಯಂತಿ ಮತ್ತು ಇತರೆ ಬೆಳವಣಿಗೆಗಳು (Mahaveer Jayanti and Other Developments)</p></h1>
+
+    <div class="pictures"> <!-- (DIV Class: pictures) -->
+        <div class="picture"> <!-- (DIV Class: picture) -->
+            <img src="https://via.placeholder.com/600x400.png?text=ಉದಾಹರಣೆ+ಚಿತ್ರ+(Example+Image)" style="width: 100%;" alt="ಉದಾಹರಣೆ ಚಿತ್ರ (Example Image)">
+            <div class="credit">ಚಿತ್ರ ಕೃಪೆ (Image Credit): ಪಿಟಿಐ</div> <!-- (DIV Class: credit) -->
+            <div class="caption"><p>ಇದು ಚಿತ್ರದ ವಿವರಣೆ (Image Caption): ಮಹಾವೀರರ ಚಿತ್ರ ಮೆರವಣಿಗೆಗೆ ನಗರದ ಮುಳಗುಂದ ನಾಕಾ ಬಳಿ ಇರುವ ಮಹಾವೀರ ಸ್ಥೂಪದ ಬಳಿ ಜೈನಮುನಿಗಳು ಚಾಲನೆ ನೀಡಿದರು.</p></div> <!-- (DIV Class: caption) -->
+        </div>
+    </div>
+
+    <div style="font-family:verdana;" class="bodytext"> <!-- (DIV Class: bodytext) - Inline Verdana will be overridden for <p> by CSS -->
+        <i><p>ಪ್ರಜಾವಾಣಿ ವಾರ್ತೆ (Prajavani News Service / Dateline)</p></i>
+        <i><p>ಲೇಖಕರು (Author Byline): ಬಿ.ಜಿ.ಪ್ರವೀಣಕುಮಾರ</p></i>
+        <p>ನಗರದಲ್ಲಿರುವ ಜೈನ ಸಮಾಜದ ಜನರು ಗುರುವಾರ ಮಹಾವೀರ ಜಯಂತಿಯನ್ನು ಶ್ರದ್ಧಾ ಭಕ್ತಿಯಿಂದ ಆಚರಿಸಿದರು. ನಗರದ ಮುಳಗುಂದ ನಾಕಾ ಬಳಿ ಇರುವ ಭಗವಾನ್ ಮಹಾವೀರ ಸ್ಥೂಪದ ಹತ್ತಿರ ಜೈನಮುನಿಗಳಾದ ರಾಷ್ಟ್ರಸಂತ ಕಮಲಮುನಿ, ಜೈನ ಮುನಿಗಳಾದ ಘನಶ್ಯಾಮ್‍ಮುನಿ, ಕೌಶಲಮುನಿ, ಅಕ್ಷತ್‍ಮುನಿ, ಸಕ್ಸಮ್‍ಮುನಿ ಅವರು ಮೆರವಣಿಗೆಗೆ ಚಾಲನೆ ನೀಡಿದರು.</p>
+        
+        <p class="Subhead">ಕಲಾ ವಿಭಾಗದಲ್ಲಿ ಟಾಪ್-10 ಸಾಧಕರು (Top-10 Achievers in Arts Stream - Subheading):</p> <!-- (P Class: Subhead) -->
+        <p>ಮಹಾವೀರರ ಚಿತ್ರವುಳ್ಳ ಮೆರವಣಿಗೆ ಹಾಗೂ ಪಲ್ಲಕ್ಕಿಯು ಸಕಲ ವಾದ್ಯ ವೈಭವದೊಂದಿಗೆ ನಗರದ ಪ್ರಮುಖ ಬೀದಿಗಳಲ್ಲಿ ಸಂಚರಿಸಿ ಪಾಂಜರಪೋಳದ ಗೋಶಾಲಾ ಆವರಣಕ್ಕೆ ಆಗಮಿಸಿತು. ಮೆರವಣಿಗೆಯಲ್ಲಿ ಶ್ವೇತಾಂಬರ ಮೂರ್ತಿ ಪೂಜಕ ಸಂಘ, ವರ್ಧಮಾನ ಸ್ಥಾನಿಕವಾಸಿ ಸಂಘ, ಜೈನ್ ತೇರಾಪಂಥ ಸಭಾ, ಕಚ್ಚಿದಾಸ್ ಓಸ್ವಾಲ ಜೈನ್ ಸಂಘ, ದಿಗಂಬರ ಜೈನ್ ಸಂಘ, ಇದ್ದರು.</p>
+        
+        <div class="adPlaceholder"> ಮೊದಲನೇ ಜಾಹೀರಾತು ಸ್ಥಳ (First Advertisement Placeholder) </div> <!-- (DIV Class: adPlaceholder) -->
+        
+        <p>ತಂತ್ರಜ್ಞಾನ ಯುಗದಲ್ಲಿ ಮಾನವನನ್ನು ಕಾಪಾಡುವುದು ಜ್ಞಾನ ಹಾಗೂ ಮೌಲ್ಯಗಳೇ ಆಗಿವೆ. ಹೀಗಾಗಿ, ಅರಿವನ್ನು ಸಂಪಾದಿಸಬೇಕು ಎಂದು ಬಿಎಎಂಎಸ್‌ ವ್ಯವಸ್ಥಾಪಕ ನಿರ್ದೇಶಕ ಡಾ.ಕೆ.ಕಿರಣ್‌ಕುಮಾರ್ ಹೇಳಿದರು.</p>
+    </div>
+
+    <h5 style="background-color:oldlace;"> <!-- (Heading Level H5) - Inline oldlace will apply -->
+        <i>
+            <p class="quote">ನರೇಗಾ ಯೋಜನೆಯಡಿ (Under NREGA Scheme) 2025–26ನೇ ಸಾಲಿನಲ್ಲಿ 16 ಲಕ್ಷ ಮಾನವ ದಿನಗಳನ್ನು ಪೂರೈಸುವ ಗುರಿ ನೀಡಲಾಗಿದ್ದು, ಈ ಗುರಿ ಸಾಧನೆಗೆ ಯೋಜನೆ ರೂಪಿಸಿದ್ದೇವೆ. ಸತತ ಎರಡನೇ ವರ್ಷವೂ ನಿಗದಿಗಿಂತ ಹೆಚ್ಚು ಮಾನವ ದಿನ ಪೂರೈಕೆಯಾಗಿದೆ. (P Class: quote)</p>
+            <p class="quote">ಈಶ್ವರ ಕಾಂದೂ (Ishwar Kandoo), <br/><span class="Designate">ಜಿಲ್ಲಾ ಪಂಚಾಯಿತಿ ಸಿಇಒ (Zilla Panchayat CEO)</span> (Span Class: Designate)</p>
+        </i>
+    </h5>
+
+    <h2><p>ನಿಧನ ವಾರ್ತೆ ಮತ್ತು ಇತರೆ ಸುದ್ದಿಗಳು (Obituary and Other News - Major Section Heading)</p></h2> <!-- (Heading Level H2) -->
+
+    <div style="background-color:gainsboro; padding:5px;"> <!-- (DIV Class: Inline Style for Supplementary Content) - Inline gainsboro & padding will apply -->
+        <p class="Briefhead">ಮಾಂಸದಂಗಡಿ ತೆರವಿಗೆ ಸೂಚನೆ (Notice to Remove Meat Shops - Brief Heading):</p> <!-- (P Class: Briefhead) -->
+        <p>ಶ್ರವಣಬೆಳಗೊಳ ಸುತ್ತ ಅನೇಕ ಮಾಂಸದ ಅಂಗಡಿಗಳನ್ನು ಎಗ್ಗಿಲ್ಲದೇ ತೆರೆದಿದ್ದು, ತ್ಯಾಗಿಗಳ, ಸಸ್ಯಹಾರಿಗಳ ಮನಸ್ಸಿಗೆ ತುಂಬಾ ನೋವಾಗುತ್ತಿದೆ. ಈ ಬಗ್ಗೆ ಸರ್ಕಾರದ ಗಮನಕ್ಕೆ ತರುವುದಾಗಿ ರಾಜ್ಯಪಾಲ ಥಾವರ್‌ಚಂದ ಗೆಹಲೋತ್ ಹೇಳಿದರು. ಈ ಕುರಿತು ಅಗತ್ಯ ಕ್ರಮ ಕೈಗೊಳ್ಳುವಂತೆ ಸಚಿವ ಡಿ. ಸುಧಾಕರ್‌ ಅವರಿಗೆ ಸೂಚಿಸಿದರು.</p>
+        <p class="quote">ಇದು 'gainsboro' ವಿಭಾಗದೊಳಗಿನ ಒಂದು ಉಲ್ಲೇಖ (This is a quote within the 'gainsboro' section). 'ನಾನು ಸನಾತನ ಧರ್ಮದವನಾಗಿದ್ದು, ಕರ್ಮದಲ್ಲಿ ಜೈನ ಧರ್ಮವನ್ನು ಆಚರಿಸುತ್ತಿದ್ದೇನೆ' ಎಂದು ರಾಜ್ಯಪಾಲರು ತಿಳಿಸಿದರು. (P Class: quote)</p>
+        <p>ಒಂದನೇ ಪುಟದಿಂದ... (Continued from page one...) 2024ರ ಸೆ. 21ರಂದು ಸರ್ಕಾರಕ್ಕೆ ಪತ್ರ ಬರೆದಿದ್ದ ಲೋಕಾಯುಕ್ತ, ಒಟ್ಟು 525 ಪ್ರಕರಣಗಳಲ್ಲಿ ಪ್ರಾಸಿಕ್ಯೂಷನ್‌ಗೆ ಮಂಜೂರಾತಿ ಕೋರಿತ್ತು.</p>
+    </div>
+
+    <div class="adPlaceholder"> ಎರಡನೇ ಜಾಹೀರಾತು ಸ್ಥಳ (Second Advertisement Placeholder) </div> <!-- (DIV Class: adPlaceholder) -->
+
+    <div style="background-color:gainsboro; padding:5px;"> <!-- (DIV Class: Inline Style for Supplementary Content - often used as a spacer) -->
+        <!-- This div is often empty in original files, acting as a visual separator/spacer -->
+    </div>
+
+</div>
+
+</body>
+</html>
